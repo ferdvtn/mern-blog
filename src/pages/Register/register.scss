@@ -1,0 +1,23 @@
+.auth-wrapper {
+    display: flex;
+    height: 100vh;
+
+    .left {
+        flex: 1;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px;
+        box-sizing: border-box;
+        width: 460px;
+    }
+}

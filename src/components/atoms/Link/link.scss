@@ -1,0 +1,11 @@
+.link-wrapper {
+    p {
+        text-align: center;
+        cursor: pointer;
+        text-decoration: underline;
+
+        &:hover {
+            color: #222;
+        }
+    }
+}
