@@ -1,0 +1,15 @@
+.createblog-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .action-button {
+        display: flex;
+        max-width: 240px;
+        margin-left: auto;
+    }
+
+    img {
+        width: 120px;
+    }
+}

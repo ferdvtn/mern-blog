@@ -1,0 +1,19 @@
+.home-wrapper {
+    .btn-create {
+        width: 120px;
+        margin-left: auto;
+    }
+    
+    .post-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .pagination-wrapper {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        max-width: 300px;
+    }
+}

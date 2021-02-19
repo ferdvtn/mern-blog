@@ -1,0 +1,11 @@
+.textarea-wrapper {
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 12px 10px;
+        box-sizing: border-box;
+        border: 1px solid grey;
+        border-radius: 3px;
+        outline: none;
+    }
+}

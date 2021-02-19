@@ -1,0 +1,42 @@
+.blogpost-wrapper {
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: calc(50% - 20px);
+    transition: all ease .2s;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+    img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .blogpost-desc {
+        .title {
+            margin-bottom: 2px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .date {
+            margin-bottom: 10px;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 14px;
+            line-height: 17px;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-2px);
+    }
+}

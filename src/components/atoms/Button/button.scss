@@ -1,22 +1,20 @@
-.button-wrapper {
-    button {
-        width: 100%;
-        padding: 9px;
-        box-sizing: border-box;
-        text-align: center;
+button.button-wrapper {
+    width: 100%;
+    padding: 9px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 2px solid salmon;
+    background-color: salmon;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all ease .2s;
+    
+    &:hover {
         border: 2px solid salmon;
-        background-color: salmon;
-        color: #fff;
-        font-size: 14px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        transition: all ease .2s;
-        
-        &:hover {
-            border: 2px solid salmon;
-            background-color: #fff;
-            color: salmon;
-            cursor: pointer;
-        }
+        background-color: #fff;
+        color: salmon;
+        cursor: pointer;
     }
 }

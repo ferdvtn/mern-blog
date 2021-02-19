@@ -1,0 +1,21 @@
+.header-wrapper {
+    padding: 15px 35px;
+    display: flex;
+    background-color: beige;
+    
+    .header-title {
+        width: 300px;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        cursor: pointer;
+    }
+
+    .header-links {
+        flex: 1;
+
+        p {
+            text-align: right;
+        }
+    }
+}
