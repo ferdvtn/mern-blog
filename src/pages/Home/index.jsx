@@ -8,7 +8,7 @@ import './home.scss'
 
 const Home = () => {
     const {dataBlog, pagination} = useSelector(state => state.homeReducer)
-    const {nickname} = useSelector(state => state.globalReducer)
+    // const {nickname} = useSelector(state => state.globalReducer)
     const [counter, setCounter] = useState(1);
 
     const dispatch = useDispatch();
@@ -19,11 +19,11 @@ const Home = () => {
     const history = useHistory()
 
     const previous = () => {
-        setCounter(counter <= 1 ? 1 : counter - 1);
+        setCounter((counter - 1) < 1 ? pagination.totalPage : counter - 1);
     }
 
     const next = () => {
-        setCounter(counter === pagination.totalPage ? pagination.totalPage : counter + 1);
+        setCounter((counter + 1) > pagination.totalPage ? 1 : counter + 1);
     }
     return (
         <div className='home-wrapper'>

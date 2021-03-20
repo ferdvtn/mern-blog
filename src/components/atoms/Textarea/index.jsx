@@ -1,10 +1,10 @@
 import React from 'react'
 import './textarea.scss'
 
-const Textarea = ({ name, placeholder }) => {
+const Textarea = ({ name, placeholder, ...rest }) => {
     return (
         <div className='textarea-wrapper'>
-            <textarea name={ name } placeholder={ placeholder }></textarea>
+            <textarea name={ name } placeholder={ placeholder } {...rest}></textarea>
         </div>
     )
 }
