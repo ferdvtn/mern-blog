@@ -3,19 +3,19 @@ import { useHistory } from 'react-router-dom'
 import { registerBg } from '../../../assets'
 import './blogitem.scss'
 
-const BlogItem = () => {
+const BlogItem = (props) => {
+    const {title, body, image, date, author} = props
     const history = useHistory()
     return (
         <div className='blogpost-wrapper' onClick={ () => history.push('/detail-blog') }>
-            <img src={ registerBg } alt="thumbnail"/>
+            <img src={`http://localhost:4000/${image}`} alt="thumbnail"/>
             <div className="blogpost-desc">
-                <p className="title">Titlenya</p>
-                <p className="date">2021, July 12</p>
+                <p className="title">{title}</p>
+                <p className="date">{date} - {author}</p>
                 <p className="content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur reiciendis molestiae illum tempore cum, esse sed cupiditate modi. Blanditiis est voluptatum maxime eaque quia eligendi aliquam placeat corporis commodi laboriosam.
+                    {body}
                 </p>
             </div>
-            blog itemsss
         </div>
     )
 }
