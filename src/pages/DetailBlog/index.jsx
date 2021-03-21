@@ -1,24 +1,42 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { registerBg } from '../../assets'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, withRouter } from 'react-router-dom'
 import { Gap, Link } from '../../components'
+import { getDetail } from '../../config/redux/action/getDetailBlogAction'
 import './detailblog.scss'
 
-const DetailBlog = () => {
+const DetailBlog = (props) => {
     const history = useHistory()
-    return (
-        <div className='detailblog-wrapper'>
-            <img src={ registerBg } alt='img-cover' className="img-cover"/>
-            <Gap height={20} />
-            <p className='title'>Title</p>
-            <Gap height={2} />
-            <p className='meta'>Author. 2021, July 12</p>
-            <Gap height={20} />
-            <p className='content'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit provident iusto, laudantium laboriosam quisquam vitae, ratione dignissimos molestiae ipsam ab culpa ipsa ipsum aliquid harum nobis cum sit, veritatis rem?</p>
-            <Gap height={30} />
-            <Link value='Kembali' onClick={ () => history.push('/') } />
-        </div>
-    )
+    const dispatch = useDispatch();
+
+    const _id = props.match.params.id;
+    useEffect(() => {
+        dispatch(getDetail(_id))
+    }, [dispatch, _id])
+    const {data} = useSelector(state => state.getDetailBlogReducer)
+    const {author, title, body, image, createdAt} = data; 
+    if (author) {
+        return (
+            <div className='detailblog-wrapper'>
+                <img src={`http://localhost:4000/${image}`} alt='img-cover' className="img-cover"/>
+                <Gap height={20} />
+                <p className='title'>{title}</p>
+                <Gap height={2} />
+                <p className='meta'>{author.name}, {createdAt}</p>
+                <Gap height={20} />
+                <p className='content'>{body}</p>
+                <Gap height={30} />
+                <Link value='Kembali' onClick={ () => history.push('/') } />
+            </div>
+        )
+    } else {
+        return (
+            <div className='detailblog-wrapper'>
+                <h1>Loading ...</h1>
+            </div>
+        )
+        
+    }
 }
 
-export default DetailBlog
+export default withRouter(DetailBlog)

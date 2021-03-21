@@ -1,28 +1,51 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, withRouter } from 'react-router-dom'
 import { Button, Gap, Input, Textarea, Upload } from '../../components'
-import { postToAPI, setForm, setImagePreview } from '../../config/redux/action'
+import { getDetail, postToAPI, putToAPI, setForm, setImagePreview } from '../../config/redux/action'
 import './createblog.scss'
 
-const CreateBlog = () => {
+const CreateBlog = (props) => {
     const {form, imageToPreview} = useSelector(state => state.createBlogReducer);
-    const history = useHistory();
+    const [isUpdate, setIsUpdate] = useState(false);
+    const _id = props.match.params.id;
     const dispatch = useDispatch();
+    useEffect(() => {
+        if (_id) {
+            setIsUpdate(true)
+            // dispatch(getDetail(_id))
+            axios.get(`http://localhost:4000/v1/blog/post/${_id}`)
+            .then((res) => {
+                const _detail = res.data.data;
+                dispatch(setForm('title', _detail.title))
+                dispatch(setForm('body', _detail.body))
+                dispatch(setImagePreview(`http://localhost:4000/${_detail.image}`))
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        }
+    }, [_id, dispatch])
+
+    const history = useHistory();
     const imageHandler = (e) => {
         const objImg = e.target.files[0];
         dispatch(setForm('image', objImg));
         dispatch(setImagePreview(URL.createObjectURL(objImg)));
     }
     const onSubmit = () => {
-        postToAPI(form);
+        if (isUpdate) {
+            putToAPI(form, _id)
+        } else {
+            postToAPI(form);
+        }
     }
 
     return (
         <div className='createblog-wrapper'>
             <div className="action-button">
-                <Button value='+ Simpan' onClick={onSubmit} />
+                <Button value={isUpdate ? '+ Update' : '+ Simpan'} onClick={onSubmit} />
                 <Gap width={25} />
                 <Button value='Kembali' onClick={ () => history.push('/') } />
             </div>
@@ -35,4 +58,4 @@ const CreateBlog = () => {
     )
 }
 
-export default CreateBlog
+export default withRouter(CreateBlog)

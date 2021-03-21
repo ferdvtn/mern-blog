@@ -16,10 +16,50 @@
     }
 
     .blogpost-desc {
-        .title {
-            margin-bottom: 2px;
-            font-size: 20px;
-            font-weight: bold;
+        .title-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .title {
+                margin-bottom: 2px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+    
+            .action-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .edit {
+                    cursor: pointer;
+                    padding: 3px 7px;
+                    box-sizing: border-box;
+                    font-size: 15px;
+                    background-color: rgb(114, 166, 250);
+                    color: #fff;
+                    font-weight: bold;
+
+                    &:hover {
+                        opacity: .5;
+                    }
+                }
+                
+                .delete {
+                    cursor: pointer;
+                    padding: 3px 7px;
+                    box-sizing: border-box;
+                    font-size: 15px;
+                    background-color: rgb(255, 102, 85);
+                    color: #fff;
+                    font-weight: bold;
+                    
+                    &:hover {
+                        opacity: .5;
+                    }
+                }
+            }
         }
 
         .date {
